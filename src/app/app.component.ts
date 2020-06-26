@@ -40,6 +40,17 @@ export class AppComponent  {
       console.log,
       console.log
     );
+
+    // filter + first
+    this.getByAvatar()
+      .pipe(
+        flatMap(uploads => uploads),
+        filter(upload => upload.type === 'avatar'),
+        first()
+    ).subscribe(
+      console.log,
+      console.log
+    );
   }
 
   getByAvatar(): Observable<FileUpload[]> {
